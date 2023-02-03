@@ -2,25 +2,25 @@
 //   return n >>> 0 === parseFloat(n);
 // }
 // Add a prompt to get user's balance. Add conditional logic to validate theuser input is a positve number only.
-let startingBalance = parseInt(
+let balance = parseInt(
   prompt("Welcome to our banking app! Please enter your starting balance.")
 );
 
-while (startingBalance < 0 || isNaN(startingBalance)) {
-  if (startingBalance < 0) {
-    startingBalance = prompt("Please enter a positive number");
+while (balance < 0 || isNaN(balance)) {
+  if (balance < 0) {
+    balance = parseInt(prompt("Please enter a positive number"));
   } else {
-    startingBalance = prompt("Please enter numbers only");
+    balance = parseInt(prompt("Please enter numbers only"));
   }
 }
+
 console.log(
-  `Great! Your account has been opened. Your bank account has a balance of ${startingBalance}.`
+  `Great! Your account has been opened. Your bank account has a balance of ${balance}.`
 );
 
 //ask user if they want to deposite it.  If, yes store the pos number. Add the new total in console.  If cancel, leave program.
 let depositMessage = confirm("Would you like to make another deposit?");
 let depositAmt;
-let newBalance;
 
 if (depositMessage) {
   depositAmt = parseInt(
@@ -31,11 +31,11 @@ if (depositMessage) {
     depositAmt = parseInt(prompt(`Please enter a positive number only!`));
   }
 
-  newBalance = startingBalance + depositAmt;
+  balance = balance + depositAmt;
 
-  console.log(`Your new balance is ${newBalance}`);
+  console.log(`Your new balance is ${balance}`);
 } else {
-  console.log(`Thank you, your amount is ${startingBalance}`);
+  console.log(`Thank you, your amount is ${balance}`);
 }
 
 // let newBalance = startingBalance + depositAmt;
