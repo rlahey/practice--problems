@@ -1,18 +1,24 @@
-// function isPositiveInteger(n) {
-//   return n >>> 0 === parseFloat(n);
-// }
-// Add a prompt to get user's balance. Add conditional logic to validate theuser input is a positve number only.
-let balance = parseInt(
-  prompt("Welcome to our banking app! Please enter your starting balance.")
-);
+// Prompts the user with the given promptMessage
+// loop until the user enters a positive integer
+// return the integer.
+function getBalanceModifier(promptMessage) {
+    let balance = parseInt(prompt(promptMessage));
 
-while (balance < 0 || isNaN(balance)) {
-  if (balance < 0) {
-    balance = parseInt(prompt("Please enter a positive number"));
-  } else {
-    balance = parseInt(prompt("Please enter numbers only"));
-  }
+    while (balance < 0 || isNaN(balance)) {
+      if (balance < 0) {
+        balance = parseInt(prompt("Please enter a positive number"));
+      } else {
+        balance = parseInt(prompt("Please enter numbers only"));
+      }
+    }
+
+    return balance;
 }
+
+// Add a prompt to get user's balance. Add conditional logic to validate theuser input is a positve number only.
+let balance = getBalanceModifier(
+  "Welcome to our banking app! Please enter your starting balance."
+);
 
 console.log(
   `Great! Your account has been opened. Your bank account has a balance of ${balance}.`
@@ -20,22 +26,17 @@ console.log(
 
 //ask user if they want to deposite it.  If, yes store the pos number. Add the new total in console.  If cancel, leave program.
 let depositMessage = confirm("Would you like to make another deposit?");
-let depositAmt;
 
 if (depositMessage) {
-  depositAmt = parseInt(
-    prompt(`Please enter how much you would like to deposit`)
-  );
+    let depositAmt = getBalanceModifier(
+      "Please enter how much you would like to deposit."
+    );
 
-  while (isNaN(depositAmt) || depositAmt < 0) {
-    depositAmt = parseInt(prompt(`Please enter a positive number only!`));
-  }
+    balance =+ depositAmt;
 
-  balance = balance + depositAmt;
-
-  console.log(`Your new balance is ${balance}`);
+    console.log(`Your new balance is ${balance}`);
 } else {
-  console.log(`Thank you, your amount is ${balance}`);
+    console.log(`Thank you, your amount is ${balance}`);
 }
 
 // let newBalance = startingBalance + depositAmt;
